@@ -1,9 +1,11 @@
-import { Tile } from "./components/Tile";
+import React from "react";
 import WordG from "./pages/WordG";
+import "./index.css";
+
 function App() {
   return (
     <div className="App">
-      <WordG/>
+      <WordG />
     </div>
   );
 }
