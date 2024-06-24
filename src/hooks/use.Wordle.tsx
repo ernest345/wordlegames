@@ -6,6 +6,7 @@ export const useWordle = () => {
   const [currentGuesses, setCurrentGuesses] = useState<string>("");
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [gameOver, setGameOver] = useState<boolean>(false);
+  const [mess, setMess] = useState<boolean>(false);
   const { isLoading, data } = useFetch();
   const [word, setWord] = useState<string>("");
 
@@ -25,6 +26,7 @@ export const useWordle = () => {
       setCurrentGuesses("");
       setCurrentIndex(0);
       setGameOver(false);
+      setMess(false)
     }
   };
 
@@ -35,12 +37,14 @@ export const useWordle = () => {
       if (currentGuesses === word) {
         alert(`Вы угадали слово ${word}`);
         setGameOver(true);
+        setMess(false)
       } else {
         if (currentIndex < 5) {
           setCurrentIndex(currentIndex + 1);
           setCurrentGuesses("");
         } else {
           alert(`Вы проиграли. Правильное слово: ${word}`);
+          setMess(true)
           setGameOver(true);
         }
       }
@@ -82,6 +86,7 @@ export const useWordle = () => {
     word,
     isLoading,
     guesses,
+    mess,
     gameOver,
     currentGuesses,
     currentIndex,

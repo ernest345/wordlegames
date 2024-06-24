@@ -12,6 +12,7 @@ const WordG = () => {
     currentGuesses,
     currentIndex,
     getTileClass,
+    mess,
     initializeGame,
   } = useWordle();
   console.log(word);
@@ -40,9 +41,10 @@ const WordG = () => {
               })}
             </div>
           ))}
+          {mess ? <p>Правильное слово: {word}</p> : null}
           {gameOver && (
             <div>
-              <p>Правильное слово: {word}</p>
+              
               <button onClick={initializeGame}>Начать заново</button>
             </div>
           )}
